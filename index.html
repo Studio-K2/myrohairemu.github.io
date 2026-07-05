@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MYRO HAIR emu | 大阪・玉造の美容室</title>
+<meta name="description" content="大阪市天王寺区玉造のプライベートヘアサロン MYRO HAIR emu。こだわりの薬剤と丁寧な施術で、あなたの髪の美しさを引き出します。">
+<meta property="og:title" content="MYRO HAIR emu | 大阪・玉造の美容室">
+<meta property="og:description" content="大阪市天王寺区玉造のプライベートヘアサロン。こだわりの薬剤と丁寧な施術で、あなたの髪の美しさを引き出します。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta name="theme-color" content="#2C2926">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+JP:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  "name": "MYRO HAIR emu",
+  "image": "images/products-lineup-full.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "玉造元町6-9 SGI真田山 2F",
+    "addressLocality": "大阪市天王寺区",
+    "addressRegion": "大阪府",
+    "postalCode": "543-0014",
+    "addressCountry": "JP"
+  },
+  "telephone": "+81-6-7710-6817",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:30",
+      "closes": "19:00"
+    }
+  ],
+  "url": "",
+  "sameAs": ["https://www.instagram.com/myro_hair.emu/"]
+}
+</script>
+
+<style>
+/* ===================================================================
+   MYRO HAIR emu — v2 Brushed Up
+   =================================================================== */
+
+:root {
+  --bg: #FAFAF8;
+  --bg-alt: #F0EEEA;
+  --bg-warm: #E9E5DD;
+  --stone: #D5D0C8;
+  --mid: #A9A39B;
+  --text: #2C2926;
+  --text-sub: #6E6860;
+  --text-muted: #9A948C;
+  --sage: #7E917A;
+  --sage-light: #A8B8A2;
+  --sage-dark: #3A4A3D;
+  --cream: #F5F0E6;
+
+  --serif: 'EB Garamond', 'Noto Serif JP', serif;
+  --sans: 'Noto Sans JP', sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== PAGE LOADER ===== */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--text);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.page-loader.done {
+  opacity: 0;
+  visibility: hidden;
+}
+.page-loader .loader-text {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+}
+
+/* ===== REVEAL SYSTEM ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+header.scrolled {
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: padding 0.3s ease;
+}
+header.scrolled .header-inner { padding: 14px 48px; }
+
+.logo {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--bg);
+  transition: color 0.4s ease;
+}
+header.scrolled .logo { color: var(--text); }
+.logo i {
+  font-style: italic;
+  font-weight: 400;
+  margin-left: 6px;
+  opacity: 0.7;
+}
+
+nav {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+}
+nav a {
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: rgba(250,250,248,0.65);
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s ease;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--sage);
+  transition: width 0.3s var(--ease-out);
+}
+nav a:hover { color: rgba(250,250,248,1); }
+nav a:hover::after { width: 100%; }
+nav a.active { color: rgba(250,250,248,1); }
+nav a.active::after { width: 100%; background: var(--sage-light); }
+
+header.scrolled nav a { color: var(--text-muted); }
+header.scrolled nav a:hover { color: var(--text); }
+header.scrolled nav a.active { color: var(--text); }
+header.scrolled nav a.active::after { background: var(--sage); }
+
+/* Mobile nav */
+.hamburger {
+  display: none;
+  width: 28px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1001;
+}
+.hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--bg);
+  transition: all 0.35s var(--ease-out);
+}
+header.scrolled .hamburger span { background: var(--text); }
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 50%; }
+.hamburger span:nth-child(3) { bottom: 0; }
+.hamburger.active span { background: var(--text) !important; }
+.hamburger.active span:nth-child(1) { top: 50%; transform: rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { bottom: auto; top: 50%; transform: rotate(-45deg); }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    url('images/products-lineup-full.jpg') center/cover no-repeat;
+  filter: brightness(0.35) contrast(1.05);
+  transform: scale(1.05);
+  transition: transform 8s ease-out;
+}
+.hero.loaded .hero-bg {
+  transform: scale(1);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: #fff;
+  margin-bottom: 6px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroReveal 1s var(--ease-out) 0.8s forwards;
+}
+.hero h1 i {
+  font-style: italic;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.hero-sub {
+  font-family: var(--serif);
+  font-size: clamp(0.7rem, 1.2vw, 0.88rem);
+  letter-spacing: 0.35em;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: heroReveal 1s var(--ease-out) 1s forwards;
+}
+
+.hero-divider {
+  width: 1px;
+  height: 0;
+  background: rgba(255,255,255,0.3);
+  margin: 0 auto 48px;
+  animation: heroLine 1.2s var(--ease-out) 1.2s forwards;
+}
+
+.hero-tagline {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.65);
+  line-height: 2.4;
+  margin-bottom: 56px;
+  opacity: 0;
+  animation: heroReveal 1s var(--ease-out) 1.5s forwards;
+}
+
+.hero-cta {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 16px 52px;
+  transition: all 0.4s ease;
+  opacity: 0;
+  animation: heroReveal 1s var(--ease-out) 1.7s forwards;
+}
+.hero-cta:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.6);
+}
+
+@keyframes heroReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroLine {
+  to { height: 48px; }
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0;
+  animation: heroReveal 1s var(--ease-out) 2.2s forwards;
+}
+.scroll-hint::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  margin: 0 auto;
+  animation: scrollPulse 2.5s ease infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ===== SHARED SECTION ===== */
+section { padding: 110px 48px; }
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-header .en {
+  font-family: var(--serif);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sage);
+  display: block;
+  margin-bottom: 12px;
+}
+.section-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+}
+.section-header .divider {
+  width: 32px;
+  height: 1px;
+  background: var(--stone);
+  margin: 24px auto 0;
+}
+
+.container { max-width: 1000px; margin: 0 auto; }
+
+/* ===== CONCEPT ===== */
+#concept { background: var(--bg); }
+
+.concept-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.concept-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  overflow: hidden;
+}
+.concept-images img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center 60%;
+}
+.concept-images img:first-child {
+  grid-column: 1 / -1;
+  height: 240px;
+  object-position: center 45%;
+}
+.concept-text p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 2.4;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+.concept-text .signature {
+  font-family: var(--serif);
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--sage);
+  margin-top: 28px;
+}
+
+/* ===== MENU ===== */
+#menu { background: var(--bg-alt); }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 72px;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.menu-category h3 {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--sage-dark);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--stone);
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 0;
+  font-size: 0.84rem;
+}
+.menu-item .name { color: var(--text); font-weight: 300; }
+.menu-item .spacer {
+  flex: 1;
+  border-bottom: 1px dotted var(--stone);
+  margin: 0 14px;
+  position: relative;
+  top: -3px;
+}
+.menu-item .price {
+  font-family: var(--serif);
+  color: var(--text-sub);
+  white-space: nowrap;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.menu-note {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ===== PRODUCTS ===== */
+#products { background: var(--bg); }
+
+.products-intro {
+  max-width: 640px;
+  margin: 0 auto 56px;
+  text-align: center;
+  font-size: 0.84rem;
+  font-weight: 300;
+  line-height: 2.2;
+  color: var(--text-sub);
+}
+
+.product-hero {
+  position: relative;
+  margin-bottom: 56px;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.product-hero img {
+  width: 100%;
+  transition: transform 0.6s var(--ease-smooth);
+}
+.product-hero:hover img {
+  transform: scale(1.02);
+}
+.product-hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+  color: #fff;
+}
+.product-hero-overlay h3 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+}
+.product-hero-overlay p {
+  font-size: 0.75rem;
+  font-weight: 300;
+  opacity: 0.75;
+  letter-spacing: 0.08em;
+}
+
+.product-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--stone);
+  margin-bottom: 56px;
+}
+.product-feature {
+  background: var(--bg);
+  text-align: center;
+  padding: 36px 24px;
+  transition: background 0.3s ease;
+}
+.product-feature:hover { background: var(--bg-alt); }
+.product-feature .icon {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--sage);
+  margin-bottom: 14px;
+  font-style: italic;
+}
+.product-feature h4 {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+}
+.product-feature p {
+  font-size: 0.72rem;
+  color: var(--text-sub);
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-alt);
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease;
+  cursor: default;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+}
+.product-card .card-img {
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.product-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+  transition: transform 0.5s var(--ease-smooth);
+}
+.product-card:hover img { transform: scale(1.06); }
+.product-card .card-info {
+  padding: 14px 16px 18px;
+  text-align: center;
+  border-top: 1px solid var(--stone);
+}
+.product-card h4 {
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  margin-bottom: 3px;
+}
+.product-card p {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.product-note {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.75rem;
+  color: var(--text-sub);
+}
+
+/* ===== ACCESS ===== */
+#access { background: var(--bg-alt); }
+
+.access-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.access-info h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  margin-bottom: 28px;
+  color: var(--text);
+}
+
+.info-row {
+  display: flex;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--stone);
+  font-size: 0.84rem;
+}
+.info-row dt {
+  width: 90px;
+  flex-shrink: 0;
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--sage-dark);
+}
+.info-row dd {
+  font-weight: 300;
+  line-height: 1.7;
+}
+.info-row a {
+  transition: color 0.3s ease;
+}
+.info-row a:hover { color: var(--sage); }
+
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 10px 20px;
+  border: 1px solid var(--stone);
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--text-sub);
+  transition: all 0.3s ease;
+}
+.instagram-link:hover {
+  border-color: var(--sage);
+  color: var(--sage-dark);
+}
+.instagram-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.map-wrap {
+  overflow: hidden;
+  height: 400px;
+  border: 1px solid var(--stone);
+}
+.map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(25%) contrast(0.96);
+  transition: filter 0.4s ease;
+}
+.map-wrap:hover iframe {
+  filter: grayscale(0%) contrast(1);
+}
+
+/* ===== BOOKING ===== */
+#booking {
+  background: var(--text);
+  position: relative;
+  overflow: hidden;
+}
+#booking::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(126,145,122,0.12) 0%, transparent 60%);
+}
+#booking .section-header .en { color: var(--sage-light); }
+#booking .section-header h2 { color: #fff; }
+#booking .section-header .divider { background: rgba(255,255,255,0.15); }
+
+.booking-inner {
+  position: relative;
+  text-align: center;
+}
+
+.booking-text {
+  font-size: 0.84rem;
+  font-weight: 200;
+  line-height: 2.2;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 48px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.booking-tel {
+  margin-bottom: 36px;
+}
+.booking-tel a {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.3s ease;
+}
+.booking-tel a:hover { color: #fff; }
+.booking-tel p {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+  letter-spacing: 0.08em;
+}
+
+.booking-divider {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  margin: 32px auto;
+}
+
+.booking-app-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family: var(--serif);
+}
+
+.app-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 28px;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.75);
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  transition: all 0.35s ease;
+}
+.app-btn:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+}
+.app-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #1E1C19;
+  padding: 56px 48px 32px;
+}
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-col h4 {
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 16px;
+}
+.footer-col p, .footer-col a {
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  line-height: 2;
+}
+.footer-col a:hover { color: rgba(255,255,255,0.8); }
+.footer-col .footer-logo-text {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 12px;
+}
+
+.footer-bottom {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 24px;
+  text-align: center;
+}
+.footer-bottom small {
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  section { padding: 80px 32px; }
+  .header-inner { padding: 16px 24px; }
+  header.scrolled .header-inner { padding: 12px 24px; }
+  .concept-body { grid-template-columns: 1fr; gap: 40px; }
+  .concept-images { grid-template-columns: 1fr 1fr; }
+  .concept-images img { height: 200px; }
+  .concept-images img:first-child { height: 200px; }
+  .menu-grid { grid-template-columns: 1fr; gap: 36px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-features { grid-template-columns: 1fr; }
+  .access-layout { grid-template-columns: 1fr; gap: 32px; }
+  .map-wrap { height: 280px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  nav {
+    position: fixed;
+    inset: 0;
+    background: rgba(250,250,248,0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--ease-out);
+  }
+  nav.open { opacity: 1; visibility: visible; }
+  nav a {
+    font-size: 1rem !important;
+    color: var(--text) !important;
+    letter-spacing: 0.25em;
+  }
+  nav a:hover { color: var(--sage-dark) !important; }
+  nav a.active { color: var(--sage-dark) !important; }
+
+  section { padding: 64px 20px; }
+  .section-header { margin-bottom: 40px; }
+  .hero { min-height: 100svh; }
+  .concept-images img { height: 160px; }
+  .concept-images img:first-child { height: 160px; }
+}
+
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .product-card .card-img { aspect-ratio: 1/1; }
+  .app-btns { flex-direction: column; align-items: center; }
+  .hero h1 { letter-spacing: 0.15em; }
+  .booking-tel a { font-size: 1.3rem; }
+}
+
+/* ===== REDUCE MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero-bg { transform: scale(1) !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div class="page-loader" id="loader">
+  <span class="loader-text">MYRO HAIR <i>emu</i></span>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="header-inner">
+    <a href="#" class="logo">MYRO HAIR <i>emu</i></a>
+    <nav id="nav">
+      <a href="#concept" data-section="concept">Concept</a>
+      <a href="#menu" data-section="menu">Menu</a>
+      <a href="#products" data-section="products">Products</a>
+      <a href="#access" data-section="access">Access</a>
+      <a href="#booking" data-section="booking">Reserve</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1>MYRO HAIR <i>emu</i></h1>
+    <p class="hero-sub">Private Hair Salon — Tamatsukuri, Osaka</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">
+      一人ひとりの個性に寄り添い、<br>
+      あなただけの美しさを引き出す場所。
+    </p>
+    <a href="#booking" class="hero-cta">Reserve</a>
+  </div>
+  <div class="scroll-hint"></div>
+</section>
+
+<!-- CONCEPT -->
+<section id="concept">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="en">Concept</span>
+      <h2>コンセプト</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="concept-body">
+      <div class="concept-images reveal">
+        <img src="images/products-lineup-full.jpg" alt="SETREAT商品とサロン内観" loading="lazy">
+        <img src="images/product-shampoo-treatment.jpg" alt="サロン内観" loading="lazy">
+        <img src="images/product-molecule-crosslink-3.jpg" alt="サロン窓からの光" loading="lazy">
+      </div>
+      <div class="concept-text">
+        <p class="reveal reveal-delay-1">
+          MYRO — 店主「麿」の名を冠したこの場所は、<br>
+          お客様一人ひとりと真剣に向き合うための<br>
+          小さなプライベートサロンです。
+        </p>
+        <p class="reveal reveal-delay-2">
+          丁寧なカウンセリングから始まる施術は、<br>
+          あなたの髪質やライフスタイルに合わせて<br>
+          「なりたい」を超える仕上がりへ。
+        </p>
+        <p class="reveal reveal-delay-3">
+          こだわりの薬剤と確かな技術で、<br>
+          髪の未来まで考えたケアをお届けします。<br>
+          くつろぎの空間で、あなたらしい美しさを。
+        </p>
+        <p class="signature reveal reveal-delay-4">— MYRO HAIR emu　店主　島 麿</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="en">Menu &amp; Price</span>
+      <h2>メニュー＆料金</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-category reveal">
+        <h3>カット — Cut</h3>
+        <div class="menu-item"><span class="name">Cut</span><span class="spacer"></span><span class="price">¥5,000</span></div>
+        <div class="menu-item"><span class="name">Jr. カット</span><span class="spacer"></span><span class="price">¥3,500</span></div>
+        <div class="menu-item"><span class="name">Kids カット</span><span class="spacer"></span><span class="price">¥2,500</span></div>
+      </div>
+      <div class="menu-category reveal reveal-delay-1">
+        <h3>カラー — Color</h3>
+        <div class="menu-item"><span class="name">リタッチ</span><span class="spacer"></span><span class="price">¥5,000</span></div>
+        <div class="menu-item"><span class="name">カラーチェンジ</span><span class="spacer"></span><span class="price">¥7,500</span></div>
+        <div class="menu-item"><span class="name">W カラー</span><span class="spacer"></span><span class="price">¥9,000〜</span></div>
+        <div class="menu-item"><span class="name">マニキュア</span><span class="spacer"></span><span class="price">¥5,500</span></div>
+      </div>
+      <div class="menu-category reveal">
+        <h3>パーマ — Perm</h3>
+        <div class="menu-item"><span class="name">デザインパーマ</span><span class="spacer"></span><span class="price">¥13,000</span></div>
+        <div class="menu-item"><span class="name">デジタルパーマ</span><span class="spacer"></span><span class="price">¥13,000</span></div>
+        <div class="menu-item"><span class="name">ストレート</span><span class="spacer"></span><span class="price">¥12,000〜24,000</span></div>
+      </div>
+      <div class="menu-category reveal reveal-delay-1">
+        <h3>トリートメント — Treatment</h3>
+        <div class="menu-item"><span class="name">emu トリートメント</span><span class="spacer"></span><span class="price">¥4,000</span></div>
+        <div class="menu-item"><span class="name">A トリートメント</span><span class="spacer"></span><span class="price">¥6,000</span></div>
+      </div>
+      <div class="menu-category reveal">
+        <h3>マッサージ — Massage</h3>
+        <div class="menu-item"><span class="name">リラクゼーション</span><span class="spacer"></span><span class="price">¥2,500</span></div>
+        <div class="menu-item"><span class="name">ヘッドスパ</span><span class="spacer"></span><span class="price">¥4,000</span></div>
+      </div>
+      <div class="menu-category reveal reveal-delay-1">
+        <h3>その他 — Others</h3>
+        <div class="menu-item"><span class="name">ブロー</span><span class="spacer"></span><span class="price">¥2,000</span></div>
+        <div class="menu-item"><span class="name">シャンプー・ブロー</span><span class="spacer"></span><span class="price">¥4,000</span></div>
+        <div class="menu-item"><span class="name">ヘアセット</span><span class="spacer"></span><span class="price">¥5,000</span></div>
+      </div>
+    </div>
+    <p class="menu-note reveal">※ 表示価格はすべて税込です。施術内容やお悩みに合わせてご提案いたします。</p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="en">Products — SETREAT</span>
+      <h2>取り扱い商品</h2>
+      <div class="divider"></div>
+    </div>
+
+    <p class="products-intro reveal">
+      当サロンでは、美容室メニューに必要なヘアーメンテナンス<br>
+      「セトリート」シリーズを使用・販売しています。<br>
+      毛髪強化・髪質改善・質感向上 — トリートメントメニューのすべてをサポートする<br>
+      デザインベースメンテナンスシステムです。
+    </p>
+
+    <div class="product-hero reveal">
+      <img src="images/products-lineup-full.jpg" alt="SETREAT シリーズ全商品ラインナップ" loading="lazy">
+      <div class="product-hero-overlay">
+        <h3>SETREAT — Careplex</h3>
+        <p>Set and Treatment — 持続可能なメニューを作るためのシリーズ</p>
+      </div>
+    </div>
+
+    <div class="product-features reveal">
+      <div class="product-feature">
+        <div class="icon">I</div>
+        <h4>毛髪強化</h4>
+        <p>薬剤のダメージリペア＆<br>薬剤へのアドバンスサポート<br>処理剤としての役割</p>
+      </div>
+      <div class="product-feature">
+        <div class="icon">II</div>
+        <h4>髪質改善</h4>
+        <p>エイジングケア＆<br>テクスチャーコントロール<br>髪質改善としての役割</p>
+      </div>
+      <div class="product-feature">
+        <div class="icon">III</div>
+        <h4>質感向上</h4>
+        <p>ツヤ感・手触り＆<br>エクステリアドレスアップ<br>質感向上としての役割</p>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card reveal">
+        <div class="card-img"><img src="images/product-acid-shampoo.jpg" alt="ACID/SHAMPOO" loading="lazy"></div>
+        <div class="card-info"><h4>ACID / SHAMPOO</h4><p>アシッドシャンプー</p></div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="card-img"><img src="images/product-amino-crosslinking-1.jpg" alt="AMINO/CROSS LINKING" loading="lazy"></div>
+        <div class="card-info"><h4>AMINO / CROSS LINKING</h4><p>No.1 — アミノ酸定着剤</p></div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="card-img"><img src="images/product-amino-fiber-2.jpg" alt="AMINO/FIBER" loading="lazy"></div>
+        <div class="card-info"><h4>AMINO / FIBER</h4><p>No.2 — 繊維タンパク質補完</p></div>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="card-img"><img src="images/product-molecule-crosslink-3.jpg" alt="Molecule/CROSS LINK" loading="lazy"></div>
+        <div class="card-info"><h4>Molecule / CROSS LINK</h4><p>No.3 — 繊維タンパク重合</p></div>
+      </div>
+      <div class="product-card reveal reveal-delay-4">
+        <div class="card-img"><img src="images/product-molecule-setup-4.jpg" alt="Molecule/SET UP" loading="lazy"></div>
+        <div class="card-info"><h4>Molecule / SET UP</h4><p>No.4 — 分子レベル混重合</p></div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="card-img"><img src="images/product-mb-alpha.jpg" alt="MB/ALPHA" loading="lazy"></div>
+        <div class="card-info"><h4>MB / ALPHA</h4><p>反応型トリートメント</p></div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="card-img"><img src="images/product-mb-plus.jpg" alt="MB/PLUS" loading="lazy"></div>
+        <div class="card-info"><h4>MB / PLUS</h4><p>ツヤ感・質感向上</p></div>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="card-img"><img src="images/product-multi-treatment.jpg" alt="MULTI/TREATMENT" loading="lazy"></div>
+        <div class="card-info"><h4>MULTI / TREATMENT</h4><p>マルチトリートメント</p></div>
+      </div>
+    </div>
+
+    <p class="product-note reveal">施術用・店頭販売ともに取り扱っております。お気軽にお問い合わせください。</p>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="en">Access &amp; Information</span>
+      <h2>アクセス</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="access-layout">
+      <div class="access-info reveal">
+        <h3>MYRO HAIR emu</h3>
+        <dl>
+          <div class="info-row">
+            <dt>住所</dt>
+            <dd>〒543-0014<br>大阪府大阪市天王寺区<br>玉造元町6-9 SGI真田山 2F</dd>
+          </div>
+          <div class="info-row">
+            <dt>電話</dt>
+            <dd><a href="tel:06-7710-6817">06-7710-6817</a></dd>
+          </div>
+          <div class="info-row">
+            <dt>営業時間</dt>
+            <dd>9:30 – 19:00</dd>
+          </div>
+          <div class="info-row">
+            <dt>定休日</dt>
+            <dd>毎週月曜日</dd>
+          </div>
+        </dl>
+        <a href="https://www.instagram.com/myro_hair.emu/" target="_blank" rel="noopener" class="instagram-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          @myro_hair.emu
+        </a>
+      </div>
+      <div class="map-wrap reveal reveal-delay-1">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1640.8!2d135.53123!3d34.67270!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e1e40ba2bd7d%3A0x807a2331fdbd8e63!2sMYRO%20HAIR%20emu!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="en">Reservation</span>
+      <h2>ご予約</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="booking-inner">
+      <p class="booking-text reveal">
+        お電話または公式アプリからご予約いただけます。
+      </p>
+      <div class="booking-tel reveal">
+        <a href="tel:06-7710-6817">06-7710-6817</a>
+        <p>受付時間 9:30 – 19:00（月曜定休）</p>
+      </div>
+      <div class="booking-divider"></div>
+      <p class="booking-app-label reveal">or Download App</p>
+      <div class="app-btns reveal">
+        <a href="https://apps.apple.com/jp/app/id1423628529" target="_blank" rel="noopener" class="app-btn">
+          <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+          App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.emu2012.myrohairemu" target="_blank" rel="noopener" class="app-btn">
+          <svg viewBox="0 0 24 24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+          Google Play
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <div class="footer-logo-text">MYRO HAIR emu</div>
+      <p>大阪市天王寺区玉造元町6-9<br>SGI真田山 2F</p>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <p>火〜日　9:30 – 19:00<br>月曜定休</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p><a href="tel:06-7710-6817">06-7710-6817</a></p>
+      <p><a href="https://www.instagram.com/myro_hair.emu/" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <small>&copy; 2025 MYRO HAIR emu. All rights reserved.</small>
+  </div>
+</footer>
+
+<script>
+// Page loader
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  setTimeout(() => {
+    loader.classList.add('done');
+    document.querySelector('.hero').classList.add('loaded');
+  }, 600);
+});
+
+// Scroll reveal with stagger
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Header scroll
+const header = document.getElementById('header');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 80);
+  lastScroll = window.scrollY;
+}, { passive: true });
+
+// Active nav tracking
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a[data-section]');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.section === entry.target.id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
+sections.forEach(s => navObserver.observe(s));
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('nav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  nav.classList.toggle('open');
+  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+});
+nav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    nav.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+</script>
+</body>
+</html>
