@@ -396,19 +396,24 @@ section { padding: 110px 48px; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  align-items: center;
+  align-items: start;
 }
 .concept-images {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  gap: 8px;
-  height: 480px;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  overflow: hidden;
 }
 .concept-images img {
   width: 100%;
-  height: 100%;
+  height: 280px;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 60%;
+}
+.concept-images img:first-child {
+  grid-column: 1 / -1;
+  height: 240px;
+  object-position: center 45%;
 }
 .concept-text p {
   font-size: 0.88rem;
@@ -845,7 +850,9 @@ footer {
   .header-inner { padding: 16px 24px; }
   header.scrolled .header-inner { padding: 12px 24px; }
   .concept-body { grid-template-columns: 1fr; gap: 40px; }
-  .concept-images { height: 280px; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+  .concept-images { grid-template-columns: 1fr 1fr; }
+  .concept-images img { height: 200px; }
+  .concept-images img:first-child { height: 200px; }
   .menu-grid { grid-template-columns: 1fr; gap: 36px; }
   .product-grid { grid-template-columns: repeat(2, 1fr); }
   .product-features { grid-template-columns: 1fr; }
@@ -881,7 +888,8 @@ footer {
   section { padding: 64px 20px; }
   .section-header { margin-bottom: 40px; }
   .hero { min-height: 100svh; }
-  .concept-images { height: 220px; }
+  .concept-images img { height: 160px; }
+  .concept-images img:first-child { height: 160px; }
 }
 
 @media (max-width: 480px) {
@@ -954,8 +962,9 @@ footer {
     </div>
     <div class="concept-body">
       <div class="concept-images reveal">
+        <img src="images/products-lineup-full.jpg" alt="SETREAT商品とサロン内観" loading="lazy">
         <img src="images/product-shampoo-treatment.jpg" alt="サロン内観" loading="lazy">
-        <img src="images/products-lineup-full.jpg" alt="SETREAT商品とサロン" loading="lazy">
+        <img src="images/product-molecule-crosslink-3.jpg" alt="サロン窓からの光" loading="lazy">
       </div>
       <div class="concept-text">
         <p class="reveal reveal-delay-1">
