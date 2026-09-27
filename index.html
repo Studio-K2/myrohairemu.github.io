@@ -701,6 +701,63 @@ section { padding: 110px 48px; }
   color: var(--text-sub);
 }
 
+/* ===== INSTAGRAM ===== */
+#instagram { background: var(--bg-warm); }
+
+.insta-intro {
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--text-sub);
+  margin: -32px auto 40px;
+}
+
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+.insta-grid[hidden] { display: none; }
+
+.insta-item {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--stone);
+}
+.insta-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-smooth);
+}
+.insta-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(44,41,38,0);
+  transition: background 0.3s ease;
+}
+.insta-item svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  color: #fff;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+.insta-item:hover img { transform: scale(1.05); }
+.insta-item:hover::after { background: rgba(44,41,38,0.35); }
+.insta-item:hover svg { opacity: 1; }
+
+.insta-follow { text-align: center; }
+.insta-follow .instagram-link { margin-top: 0; }
+
 /* ===== ACCESS ===== */
 #access { background: var(--bg-alt); }
 
@@ -942,6 +999,7 @@ footer {
   .concept-images img:first-child { height: 200px; }
   .menu-grid { grid-template-columns: 1fr; gap: 36px; }
   .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .insta-grid { grid-template-columns: repeat(2, 1fr); }
   .product-features { grid-template-columns: 1fr; }
   .access-layout { grid-template-columns: 1fr; gap: 32px; }
   .map-wrap { height: 280px; }
@@ -1232,6 +1290,25 @@ footer {
   </div>
 </section>
 
+<!-- INSTAGRAM -->
+<section id="instagram">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="en">Instagram</span>
+      <h2>ピックアップ</h2>
+      <div class="divider"></div>
+    </div>
+    <p class="insta-intro reveal">スタイルやサロンの日常を発信しています。</p>
+    <div class="insta-grid" id="insta-grid" hidden></div>
+    <div class="insta-follow reveal">
+      <a href="https://www.instagram.com/myro_hair.emu/" target="_blank" rel="noopener" class="instagram-link">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @myro_hair.emu をフォロー
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ACCESS -->
 <section id="access">
   <div class="container">
@@ -1378,6 +1455,51 @@ const navObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
 sections.forEach(s => navObserver.observe(s));
+
+// Instagram: show a random pick from the Behold feed (https://behold.so)
+// Set the feed URL issued by Behold. While empty, only the follow button is shown.
+const INSTAGRAM_FEED_URL = '';
+const INSTAGRAM_PICK = 4;
+(async () => {
+  if (!INSTAGRAM_FEED_URL) return;
+  const grid = document.getElementById('insta-grid');
+  try {
+    const res = await fetch(INSTAGRAM_FEED_URL);
+    if (!res.ok) return;
+    const data = await res.json();
+    const posts = (Array.isArray(data) ? data : data.posts || [])
+      .map(p => ({
+        url: p.permalink,
+        img: (p.sizes && p.sizes.medium && p.sizes.medium.mediaUrl)
+          || (p.mediaType === 'VIDEO' ? p.thumbnailUrl : p.mediaUrl),
+        alt: (p.prunedCaption || p.caption || 'Instagram の投稿').slice(0, 80)
+      }))
+      .filter(p => p.url && p.img);
+    for (let i = posts.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [posts[i], posts[j]] = [posts[j], posts[i]];
+    }
+    const picks = posts.slice(0, INSTAGRAM_PICK);
+    if (!picks.length) return;
+    picks.forEach(p => {
+      const a = document.createElement('a');
+      a.className = 'insta-item';
+      a.href = p.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      const img = document.createElement('img');
+      img.src = p.img;
+      img.alt = p.alt;
+      img.loading = 'lazy';
+      a.appendChild(img);
+      a.insertAdjacentHTML('beforeend', '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>');
+      grid.appendChild(a);
+    });
+    grid.hidden = false;
+  } catch (e) {
+    // Network or feed error: keep the follow button only
+  }
+})();
 
 // Mobile menu
 const hamburger = document.getElementById('hamburger');
