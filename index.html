@@ -1295,10 +1295,10 @@ footer {
   <div class="container">
     <div class="section-header reveal">
       <span class="en">Instagram</span>
-      <h2>ピックアップ</h2>
+      <h2>サロンの日常</h2>
       <div class="divider"></div>
     </div>
-    <p class="insta-intro reveal">スタイルやサロンの日常を発信しています。</p>
+    <p class="insta-intro reveal">スタイルや店内の様子を発信しています。</p>
     <div class="insta-grid" id="insta-grid" hidden></div>
     <div class="insta-follow reveal">
       <a href="https://www.instagram.com/myro_hair.emu/" target="_blank" rel="noopener" class="instagram-link">
@@ -1474,7 +1474,7 @@ const INSTAGRAM_PICK = 4;
           || (p.mediaType === 'VIDEO' ? p.thumbnailUrl : p.mediaUrl),
         alt: (p.prunedCaption || p.caption || 'Instagram の投稿').slice(0, 80)
       }))
-      .filter(p => p.url && p.img);
+      .filter(p => /^https:\/\/www\.instagram\.com\//.test(p.url || '') && /^https:\/\//.test(p.img || ''));
     for (let i = posts.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [posts[i], posts[j]] = [posts[j], posts[i]];
