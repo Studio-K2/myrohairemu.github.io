@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 <meta name="theme-color" content="#2C2926">
+<meta property="og:site_name" content="MYRO HAIR emu">
+<meta property="og:url" content="https://myrohairemu.com/">
+<meta property="og:image" content="https://myrohairemu.com/images/hero.jpg">
+<link rel="canonical" href="https://myrohairemu.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232C2926'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23A8B8A2'%3Ee%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="images/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans+JP:wght@200;300;400;500&family=Noto+Serif+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -20,7 +27,8 @@
   "@context": "https://schema.org",
   "@type": "HairSalon",
   "name": "MYRO HAIR emu",
-  "image": "images/products-lineup-full.jpg",
+  "image": "https://myrohairemu.com/images/hero.jpg",
+  "url": "https://myrohairemu.com/",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "玉造元町6-9 SGI真田山 2F",
@@ -38,11 +46,12 @@
       "closes": "19:00"
     }
   ],
-  "url": "",
+  "priceRange": "¥2,000〜",
   "sameAs": ["https://www.instagram.com/myro_hair.emu/"]
 }
 </script>
 
+<script>document.documentElement.classList.remove('no-js');</script>
 <style>
 /* ===================================================================
    MYRO HAIR emu — v2 Brushed Up
@@ -87,6 +96,19 @@ body {
 
 img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
+:focus-visible { outline: 1px solid var(--sage); outline-offset: 4px; }
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 10000;
+  background: var(--text);
+  color: #fff;
+  padding: 10px 18px;
+  font-size: 0.8rem;
+}
+.skip-link:focus { top: 16px; }
 
 /* ===== PAGE LOADER ===== */
 .page-loader {
@@ -160,8 +182,11 @@ header.scrolled .header-inner { padding: 14px 48px; }
   letter-spacing: 0.2em;
   color: var(--bg);
   transition: color 0.4s ease;
+  position: relative;
+  z-index: 1001;
 }
-header.scrolled .logo { color: var(--text); }
+header.scrolled .logo,
+header.menu-open .logo { color: var(--text); }
 .logo i {
   font-style: italic;
   font-weight: 400;
@@ -211,6 +236,9 @@ header.scrolled nav a.active::after { background: var(--sage); }
   position: relative;
   cursor: pointer;
   z-index: 1001;
+  background: none;
+  border: 0;
+  padding: 0;
 }
 .hamburger span {
   position: absolute;
@@ -246,7 +274,7 @@ header.scrolled .hamburger span { background: var(--text); }
   position: absolute;
   inset: 0;
   background:
-    url('images/products-lineup-full.jpg') center/cover no-repeat;
+    url('images/hero.jpg') center 45%/cover no-repeat;
   filter: brightness(0.35) contrast(1.05);
   transform: scale(1.05);
   transition: transform 8s ease-out;
@@ -413,7 +441,7 @@ section { padding: 110px 48px; }
 .concept-images img:first-child {
   grid-column: 1 / -1;
   height: 240px;
-  object-position: center 45%;
+  object-position: center 40%;
 }
 .concept-text p {
   font-size: 0.88rem;
@@ -504,6 +532,8 @@ section { padding: 110px 48px; }
 }
 .product-hero img {
   width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
   transition: transform 0.6s var(--ease-smooth);
 }
 .product-hero:hover img {
@@ -591,8 +621,8 @@ section { padding: 110px 48px; }
 .product-card img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 16px;
+  object-fit: cover;
+  object-position: center 60%;
   transition: transform 0.5s var(--ease-smooth);
 }
 .product-card:hover img { transform: scale(1.06); }
@@ -663,6 +693,13 @@ section { padding: 110px 48px; }
   transition: color 0.3s ease;
 }
 .info-row a:hover { color: var(--sage); }
+.info-row .map-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.74rem;
+  color: var(--sage-dark);
+  border-bottom: 1px solid var(--stone);
+}
 
 .instagram-link {
   display: inline-flex;
@@ -894,11 +931,14 @@ footer {
 
 @media (max-width: 480px) {
   .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .product-card .card-img { aspect-ratio: 1/1; }
   .app-btns { flex-direction: column; align-items: center; }
   .hero h1 { letter-spacing: 0.15em; }
   .booking-tel a { font-size: 1.3rem; }
 }
+
+/* ===== NO-JS FALLBACK ===== */
+.no-js .page-loader { display: none; }
+.no-js .reveal { opacity: 1; transform: none; }
 
 /* ===== REDUCE MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
@@ -914,25 +954,27 @@ footer {
 </head>
 <body>
 
+<a href="#concept" class="skip-link">本文へスキップ</a>
+
 <!-- PAGE LOADER -->
-<div class="page-loader" id="loader">
+<div class="page-loader" id="loader" aria-hidden="true">
   <span class="loader-text">MYRO HAIR <i>emu</i></span>
 </div>
 
 <!-- HEADER -->
 <header id="header">
   <div class="header-inner">
-    <a href="#" class="logo">MYRO HAIR <i>emu</i></a>
-    <nav id="nav">
+    <a href="#hero" class="logo" aria-label="MYRO HAIR emu トップへ">MYRO HAIR <i>emu</i></a>
+    <nav id="nav" aria-label="メインメニュー">
       <a href="#concept" data-section="concept">Concept</a>
       <a href="#menu" data-section="menu">Menu</a>
       <a href="#products" data-section="products">Products</a>
       <a href="#access" data-section="access">Access</a>
       <a href="#booking" data-section="booking">Reserve</a>
     </nav>
-    <div class="hamburger" id="hamburger">
+    <button type="button" class="hamburger" id="hamburger" aria-label="メニューを開く" aria-controls="nav" aria-expanded="false">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </header>
 
@@ -949,7 +991,7 @@ footer {
     </p>
     <a href="#booking" class="hero-cta">Reserve</a>
   </div>
-  <div class="scroll-hint"></div>
+  <div class="scroll-hint" aria-hidden="true"></div>
 </section>
 
 <!-- CONCEPT -->
@@ -962,9 +1004,9 @@ footer {
     </div>
     <div class="concept-body">
       <div class="concept-images reveal">
-        <img src="images/products-lineup-full.jpg" alt="SETREAT商品とサロン内観" loading="lazy">
-        <img src="images/product-shampoo-treatment.jpg" alt="サロン内観" loading="lazy">
-        <img src="images/product-molecule-crosslink-3.jpg" alt="サロン窓からの光" loading="lazy">
+        <img src="images/salon-interior.jpg" alt="観葉植物と自然光に包まれたサロン内観" width="1200" height="400" loading="lazy">
+        <img src="images/shampoo-treatment-set.jpg" alt="SETREAT アシッドシャンプーとマルチトリートメント" width="800" height="600" loading="lazy">
+        <img src="images/product-mb-plus.jpg" alt="SETREAT MB / PLUS" width="600" height="800" loading="lazy">
       </div>
       <div class="concept-text">
         <p class="reveal reveal-delay-1">
@@ -1054,7 +1096,7 @@ footer {
     </p>
 
     <div class="product-hero reveal">
-      <img src="images/products-lineup-full.jpg" alt="SETREAT シリーズ全商品ラインナップ" loading="lazy">
+      <img src="images/lineup.jpg" alt="SETREAT シリーズ全商品ラインナップ" width="1200" height="800" loading="lazy">
       <div class="product-hero-overlay">
         <h3>SETREAT — Careplex</h3>
         <p>Set and Treatment — 持続可能なメニューを作るためのシリーズ</p>
@@ -1063,17 +1105,17 @@ footer {
 
     <div class="product-features reveal">
       <div class="product-feature">
-        <div class="icon">I</div>
+        <div class="icon" aria-hidden="true">I</div>
         <h4>毛髪強化</h4>
         <p>薬剤のダメージリペア＆<br>薬剤へのアドバンスサポート<br>処理剤としての役割</p>
       </div>
       <div class="product-feature">
-        <div class="icon">II</div>
+        <div class="icon" aria-hidden="true">II</div>
         <h4>髪質改善</h4>
         <p>エイジングケア＆<br>テクスチャーコントロール<br>髪質改善としての役割</p>
       </div>
       <div class="product-feature">
-        <div class="icon">III</div>
+        <div class="icon" aria-hidden="true">III</div>
         <h4>質感向上</h4>
         <p>ツヤ感・手触り＆<br>エクステリアドレスアップ<br>質感向上としての役割</p>
       </div>
@@ -1081,35 +1123,35 @@ footer {
 
     <div class="product-grid">
       <div class="product-card reveal">
-        <div class="card-img"><img src="images/product-acid-shampoo.jpg" alt="ACID/SHAMPOO" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-acid-shampoo.jpg" alt="ACID/SHAMPOO" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>ACID / SHAMPOO</h4><p>アシッドシャンプー</p></div>
       </div>
       <div class="product-card reveal reveal-delay-1">
-        <div class="card-img"><img src="images/product-amino-crosslinking-1.jpg" alt="AMINO/CROSS LINKING" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-amino-crosslinking-1.jpg" alt="AMINO/CROSS LINKING" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>AMINO / CROSS LINKING</h4><p>No.1 — アミノ酸定着剤</p></div>
       </div>
       <div class="product-card reveal reveal-delay-2">
-        <div class="card-img"><img src="images/product-amino-fiber-2.jpg" alt="AMINO/FIBER" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-amino-fiber-2.jpg" alt="AMINO/FIBER" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>AMINO / FIBER</h4><p>No.2 — 繊維タンパク質補完</p></div>
       </div>
       <div class="product-card reveal reveal-delay-3">
-        <div class="card-img"><img src="images/product-molecule-crosslink-3.jpg" alt="Molecule/CROSS LINK" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-molecule-crosslink-3.jpg" alt="Molecule/CROSS LINK" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>Molecule / CROSS LINK</h4><p>No.3 — 繊維タンパク重合</p></div>
       </div>
       <div class="product-card reveal reveal-delay-4">
-        <div class="card-img"><img src="images/product-molecule-setup-4.jpg" alt="Molecule/SET UP" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-molecule-setup-4.jpg" alt="Molecule/SET UP" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>Molecule / SET UP</h4><p>No.4 — 分子レベル混重合</p></div>
       </div>
       <div class="product-card reveal reveal-delay-1">
-        <div class="card-img"><img src="images/product-mb-alpha.jpg" alt="MB/ALPHA" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-mb-alpha.jpg" alt="MB/ALPHA" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>MB / ALPHA</h4><p>反応型トリートメント</p></div>
       </div>
       <div class="product-card reveal reveal-delay-2">
-        <div class="card-img"><img src="images/product-mb-plus.jpg" alt="MB/PLUS" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-mb-plus.jpg" alt="MB/PLUS" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>MB / PLUS</h4><p>ツヤ感・質感向上</p></div>
       </div>
       <div class="product-card reveal reveal-delay-3">
-        <div class="card-img"><img src="images/product-multi-treatment.jpg" alt="MULTI/TREATMENT" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-multi-treatment.jpg" alt="MULTI/TREATMENT" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>MULTI / TREATMENT</h4><p>マルチトリートメント</p></div>
       </div>
     </div>
@@ -1132,7 +1174,7 @@ footer {
         <dl>
           <div class="info-row">
             <dt>住所</dt>
-            <dd>〒543-0014<br>大阪府大阪市天王寺区<br>玉造元町6-9 SGI真田山 2F</dd>
+            <dd>〒543-0014<br>大阪府大阪市天王寺区<br>玉造元町6-9 SGI真田山 2F<br><a href="https://www.google.com/maps/search/?api=1&amp;query=MYRO%20HAIR%20emu%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%A4%A9%E7%8E%8B%E5%AF%BA%E5%8C%BA%E7%8E%89%E9%80%A0%E5%85%83%E7%94%BA6-9" target="_blank" rel="noopener" class="map-link">Google マップで開く →</a></dd>
           </div>
           <div class="info-row">
             <dt>電話</dt>
@@ -1148,13 +1190,14 @@ footer {
           </div>
         </dl>
         <a href="https://www.instagram.com/myro_hair.emu/" target="_blank" rel="noopener" class="instagram-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
           @myro_hair.emu
         </a>
       </div>
       <div class="map-wrap reveal reveal-delay-1">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1640.8!2d135.53123!3d34.67270!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e1e40ba2bd7d%3A0x807a2331fdbd8e63!2sMYRO%20HAIR%20emu!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp"
+          title="MYRO HAIR emu の地図"
+          src="https://maps.google.com/maps?q=MYRO%20HAIR%20emu%20%E5%A4%A7%E9%98%AA%E5%B8%82%E5%A4%A9%E7%8E%8B%E5%AF%BA%E5%8C%BA%E7%8E%89%E9%80%A0%E5%85%83%E7%94%BA6-9&amp;z=17&amp;hl=ja&amp;output=embed"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
@@ -1184,11 +1227,11 @@ footer {
       <p class="booking-app-label reveal">or Download App</p>
       <div class="app-btns reveal">
         <a href="https://apps.apple.com/jp/app/id1423628529" target="_blank" rel="noopener" class="app-btn">
-          <svg viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
           App Store
         </a>
         <a href="https://play.google.com/store/apps/details?id=com.emu2012.myrohairemu" target="_blank" rel="noopener" class="app-btn">
-          <svg viewBox="0 0 24 24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
           Google Play
         </a>
       </div>
@@ -1214,19 +1257,23 @@ footer {
     </div>
   </div>
   <div class="footer-bottom">
-    <small>&copy; 2025 MYRO HAIR emu. All rights reserved.</small>
+    <small>&copy; <span id="year">2026</span> MYRO HAIR emu. All rights reserved.</small>
   </div>
 </footer>
 
 <script>
 // Page loader
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  setTimeout(() => {
-    loader.classList.add('done');
-    document.querySelector('.hero').classList.add('loaded');
-  }, 600);
-});
+const loader = document.getElementById('loader');
+const hideLoader = () => {
+  if (loader.classList.contains('done')) return;
+  loader.classList.add('done');
+  document.querySelector('.hero').classList.add('loaded');
+};
+window.addEventListener('load', () => setTimeout(hideLoader, 600));
+// Fallback: never keep the loader up for more than 3s on slow connections
+setTimeout(hideLoader, 3000);
+
+document.getElementById('year').textContent = new Date().getFullYear();
 
 // Scroll reveal with stagger
 const revealObserver = new IntersectionObserver((entries) => {
@@ -1242,11 +1289,9 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 // Header scroll
 const header = document.getElementById('header');
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 80);
-  lastScroll = window.scrollY;
-}, { passive: true });
+const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 80);
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();
 
 // Active nav tracking
 const sections = document.querySelectorAll('section[id]');
@@ -1265,17 +1310,21 @@ sections.forEach(s => navObserver.observe(s));
 // Mobile menu
 const hamburger = document.getElementById('hamburger');
 const nav = document.getElementById('nav');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  nav.classList.toggle('open');
-  document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
-});
-nav.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    nav.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+const setMenu = (open) => {
+  hamburger.classList.toggle('active', open);
+  nav.classList.toggle('open', open);
+  header.classList.toggle('menu-open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  hamburger.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  document.body.style.overflow = open ? 'hidden' : '';
+};
+hamburger.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && nav.classList.contains('open')) {
+    setMenu(false);
+    hamburger.focus();
+  }
 });
 </script>
 </body>
