@@ -223,6 +223,10 @@ nav a:hover::after { width: 100%; }
 nav a.active { color: rgba(250,250,248,1); }
 nav a.active::after { width: 100%; background: var(--sage-light); }
 
+nav a.nav-insta { display: inline-flex; line-height: 0; }
+nav a.nav-insta svg { width: 17px; height: 17px; }
+nav a.nav-insta::after { display: none; }
+
 header.scrolled nav a { color: var(--text-muted); }
 header.scrolled nav a:hover { color: var(--text); }
 header.scrolled nav a.active { color: var(--text); }
@@ -501,6 +505,16 @@ section { padding: 110px 48px; }
   white-space: nowrap;
   font-weight: 400;
   letter-spacing: 0.03em;
+  text-align: right;
+  line-height: 1.4;
+}
+.menu-item .price small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
 }
 
 .menu-note {
@@ -595,6 +609,42 @@ section { padding: 110px 48px; }
   color: var(--text-sub);
   font-weight: 300;
   line-height: 1.9;
+}
+
+.product-group { margin-bottom: 56px; }
+.product-group:last-of-type { margin-bottom: 0; }
+.product-group-title {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--sage-dark);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--stone);
+}
+.product-group-title .en {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+.product-card .card-img { position: relative; }
+.product-card .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: #fff;
+  background: var(--sage-dark);
+  padding: 3px 9px;
 }
 
 .product-grid {
@@ -921,6 +971,8 @@ footer {
   }
   nav a:hover { color: var(--sage-dark) !important; }
   nav a.active { color: var(--sage-dark) !important; }
+  nav a.nav-insta { margin-top: 8px; }
+  nav a.nav-insta svg { width: 24px; height: 24px; }
 
   section { padding: 64px 20px; }
   .section-header { margin-bottom: 40px; }
@@ -971,6 +1023,7 @@ footer {
       <a href="#products" data-section="products">Products</a>
       <a href="#access" data-section="access">Access</a>
       <a href="#booking" data-section="booking">Reserve</a>
+      <a href="https://www.instagram.com/myro_hair.emu/" target="_blank" rel="noopener" class="nav-insta" aria-label="Instagram（新しいタブで開く）"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
     </nav>
     <button type="button" class="hamburger" id="hamburger" aria-label="メニューを開く" aria-controls="nav" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -1041,41 +1094,41 @@ footer {
     <div class="menu-grid">
       <div class="menu-category reveal">
         <h3>カット — Cut</h3>
-        <div class="menu-item"><span class="name">Cut</span><span class="spacer"></span><span class="price">¥5,000</span></div>
-        <div class="menu-item"><span class="name">Jr. カット</span><span class="spacer"></span><span class="price">¥3,500</span></div>
-        <div class="menu-item"><span class="name">Kids カット</span><span class="spacer"></span><span class="price">¥2,500</span></div>
+        <div class="menu-item"><span class="name">Cut</span><span class="spacer"></span><span class="price">¥5,000<small>税込 ¥5,500</small></span></div>
+        <div class="menu-item"><span class="name">Jr. カット</span><span class="spacer"></span><span class="price">¥3,500<small>税込 ¥3,850</small></span></div>
+        <div class="menu-item"><span class="name">Kids カット</span><span class="spacer"></span><span class="price">¥2,500<small>税込 ¥2,750</small></span></div>
       </div>
       <div class="menu-category reveal reveal-delay-1">
         <h3>カラー — Color</h3>
-        <div class="menu-item"><span class="name">リタッチ</span><span class="spacer"></span><span class="price">¥5,000</span></div>
-        <div class="menu-item"><span class="name">カラーチェンジ</span><span class="spacer"></span><span class="price">¥7,500</span></div>
-        <div class="menu-item"><span class="name">W カラー</span><span class="spacer"></span><span class="price">¥9,000〜</span></div>
-        <div class="menu-item"><span class="name">マニキュア</span><span class="spacer"></span><span class="price">¥5,500</span></div>
+        <div class="menu-item"><span class="name">リタッチ</span><span class="spacer"></span><span class="price">¥5,000<small>税込 ¥5,500</small></span></div>
+        <div class="menu-item"><span class="name">カラーチェンジ</span><span class="spacer"></span><span class="price">¥7,500<small>税込 ¥8,250</small></span></div>
+        <div class="menu-item"><span class="name">W カラー</span><span class="spacer"></span><span class="price">¥9,000〜<small>税込 ¥9,900〜</small></span></div>
+        <div class="menu-item"><span class="name">マニキュア</span><span class="spacer"></span><span class="price">¥5,500<small>税込 ¥6,050</small></span></div>
       </div>
       <div class="menu-category reveal">
         <h3>パーマ — Perm</h3>
-        <div class="menu-item"><span class="name">デザインパーマ</span><span class="spacer"></span><span class="price">¥13,000</span></div>
-        <div class="menu-item"><span class="name">デジタルパーマ</span><span class="spacer"></span><span class="price">¥13,000</span></div>
-        <div class="menu-item"><span class="name">ストレート</span><span class="spacer"></span><span class="price">¥12,000〜24,000</span></div>
+        <div class="menu-item"><span class="name">デザインパーマ</span><span class="spacer"></span><span class="price">¥13,000<small>税込 ¥14,300</small></span></div>
+        <div class="menu-item"><span class="name">デジタルパーマ</span><span class="spacer"></span><span class="price">¥13,000<small>税込 ¥14,300</small></span></div>
+        <div class="menu-item"><span class="name">ストレート</span><span class="spacer"></span><span class="price">¥12,000〜24,000<small>税込 ¥13,200〜26,400</small></span></div>
       </div>
       <div class="menu-category reveal reveal-delay-1">
         <h3>トリートメント — Treatment</h3>
-        <div class="menu-item"><span class="name">emu トリートメント</span><span class="spacer"></span><span class="price">¥4,000</span></div>
-        <div class="menu-item"><span class="name">A トリートメント</span><span class="spacer"></span><span class="price">¥6,000</span></div>
+        <div class="menu-item"><span class="name">emu トリートメント</span><span class="spacer"></span><span class="price">¥4,000<small>税込 ¥4,400</small></span></div>
+        <div class="menu-item"><span class="name">A トリートメント</span><span class="spacer"></span><span class="price">¥6,000<small>税込 ¥6,600</small></span></div>
       </div>
       <div class="menu-category reveal">
         <h3>マッサージ — Massage</h3>
-        <div class="menu-item"><span class="name">リラクゼーション</span><span class="spacer"></span><span class="price">¥2,500</span></div>
-        <div class="menu-item"><span class="name">ヘッドスパ</span><span class="spacer"></span><span class="price">¥4,000</span></div>
+        <div class="menu-item"><span class="name">リラクゼーション</span><span class="spacer"></span><span class="price">¥2,500<small>税込 ¥2,750</small></span></div>
+        <div class="menu-item"><span class="name">ヘッドスパ</span><span class="spacer"></span><span class="price">¥4,000<small>税込 ¥4,400</small></span></div>
       </div>
       <div class="menu-category reveal reveal-delay-1">
         <h3>その他 — Others</h3>
-        <div class="menu-item"><span class="name">ブロー</span><span class="spacer"></span><span class="price">¥2,000</span></div>
-        <div class="menu-item"><span class="name">シャンプー・ブロー</span><span class="spacer"></span><span class="price">¥4,000</span></div>
-        <div class="menu-item"><span class="name">ヘアセット</span><span class="spacer"></span><span class="price">¥5,000</span></div>
+        <div class="menu-item"><span class="name">ブロー</span><span class="spacer"></span><span class="price">¥2,000<small>税込 ¥2,200</small></span></div>
+        <div class="menu-item"><span class="name">シャンプー・ブロー</span><span class="spacer"></span><span class="price">¥4,000<small>税込 ¥4,400</small></span></div>
+        <div class="menu-item"><span class="name">ヘアセット</span><span class="spacer"></span><span class="price">¥5,000<small>税込 ¥5,500</small></span></div>
       </div>
     </div>
-    <p class="menu-note reveal">※ 表示価格はすべて税込です。施術内容やお悩みに合わせてご提案いたします。</p>
+    <p class="menu-note reveal">※ 表示価格は税抜です（下段は税込価格）。施術内容やお悩みに合わせてご提案いたします。</p>
   </div>
 </section>
 
@@ -1121,38 +1174,57 @@ footer {
       </div>
     </div>
 
-    <div class="product-grid">
+    <div class="product-group">
+      <h3 class="product-group-title reveal"><span class="en">Shampoo</span>シャンプー</h3>
+      <div class="product-grid">
       <div class="product-card reveal">
-        <div class="card-img"><img src="images/product-acid-shampoo.jpg" alt="ACID/SHAMPOO" width="600" height="800" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-acid-shampoo.jpg" alt="Careplex ACID / SHAMPOO" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>ACID / SHAMPOO</h4><p>アシッドシャンプー</p></div>
       </div>
+      </div>
+    </div>
+
+    <div class="product-group">
+      <h3 class="product-group-title reveal"><span class="en">Treatment</span>トリートメント</h3>
+      <div class="product-grid">
+      <div class="product-card reveal">
+        <div class="card-img"><span class="badge">NEW</span><img src="images/product-multi-treatment-3.jpg" alt="Careplex MULTI / TREATMENT 3" width="600" height="800" loading="lazy"></div>
+        <div class="card-info"><h4>MULTI / TREATMENT 3</h4><p>マルチトリートメント 3</p></div>
+      </div>
       <div class="product-card reveal reveal-delay-1">
-        <div class="card-img"><img src="images/product-amino-crosslinking-1.jpg" alt="AMINO/CROSS LINKING" width="600" height="800" loading="lazy"></div>
+        <div class="card-img"><img src="images/product-multi-treatment.jpg" alt="SETREAT MULTI / TREATMENT" width="600" height="800" loading="lazy"></div>
+        <div class="card-info"><h4>MULTI / TREATMENT</h4><p>マルチトリートメント</p></div>
+      </div>
+      </div>
+    </div>
+
+    <div class="product-group">
+      <h3 class="product-group-title reveal"><span class="en">Salon Care System</span>サロンケアシステム</h3>
+      <div class="product-grid">
+      <div class="product-card reveal">
+        <div class="card-img"><img src="images/product-amino-crosslinking-1.jpg" alt="AMINO / CROSS LINKING" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>AMINO / CROSS LINKING</h4><p>No.1 — アミノ酸定着剤</p></div>
       </div>
-      <div class="product-card reveal reveal-delay-2">
-        <div class="card-img"><img src="images/product-amino-fiber-2.jpg" alt="AMINO/FIBER" width="600" height="800" loading="lazy"></div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="card-img"><img src="images/product-amino-fiber-2.jpg" alt="AMINO / FIBER" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>AMINO / FIBER</h4><p>No.2 — 繊維タンパク質補完</p></div>
       </div>
-      <div class="product-card reveal reveal-delay-3">
-        <div class="card-img"><img src="images/product-molecule-crosslink-3.jpg" alt="Molecule/CROSS LINK" width="600" height="800" loading="lazy"></div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="card-img"><img src="images/product-molecule-crosslink-3.jpg" alt="Molecule / CROSS LINK" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>Molecule / CROSS LINK</h4><p>No.3 — 繊維タンパク重合</p></div>
       </div>
-      <div class="product-card reveal reveal-delay-4">
-        <div class="card-img"><img src="images/product-molecule-setup-4.jpg" alt="Molecule/SET UP" width="600" height="800" loading="lazy"></div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="card-img"><img src="images/product-molecule-setup-4.jpg" alt="Molecule / SET UP" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>Molecule / SET UP</h4><p>No.4 — 分子レベル混重合</p></div>
       </div>
-      <div class="product-card reveal reveal-delay-1">
-        <div class="card-img"><img src="images/product-mb-alpha.jpg" alt="MB/ALPHA" width="600" height="800" loading="lazy"></div>
-        <div class="card-info"><h4>MB / ALPHA</h4><p>反応型トリートメント</p></div>
-      </div>
-      <div class="product-card reveal reveal-delay-2">
-        <div class="card-img"><img src="images/product-mb-plus.jpg" alt="MB/PLUS" width="600" height="800" loading="lazy"></div>
+      <div class="product-card reveal">
+        <div class="card-img"><img src="images/product-mb-plus.jpg" alt="MB / PLUS" width="600" height="800" loading="lazy"></div>
         <div class="card-info"><h4>MB / PLUS</h4><p>ツヤ感・質感向上</p></div>
       </div>
-      <div class="product-card reveal reveal-delay-3">
-        <div class="card-img"><img src="images/product-multi-treatment.jpg" alt="MULTI/TREATMENT" width="600" height="800" loading="lazy"></div>
-        <div class="card-info"><h4>MULTI / TREATMENT</h4><p>マルチトリートメント</p></div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="card-img"><img src="images/product-mb-alpha.jpg" alt="MB / ALPHA" width="600" height="800" loading="lazy"></div>
+        <div class="card-info"><h4>MB / ALPHA</h4><p>反応型トリートメント</p></div>
+      </div>
       </div>
     </div>
 
